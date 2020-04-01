@@ -1,0 +1,66 @@
+package com.project.stockmanagement.controller;
+
+import java.util.List;
+
+import org.jboss.logging.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.project.stockmanagement.dto.StockDto;
+import com.project.stockmanagement.exception.RecordNotFoundException;
+import com.project.stockmanagement.service.StockManagementService;
+
+/**
+ * @author Sweta
+ *
+ */
+@RestController
+@RequestMapping("/stocks")
+public class StockController {
+
+	  @Autowired StockManagementService stockService;
+	  
+	  private Logger logger;
+	
+	/**
+	 * Method to fetch all stocks
+	 * @return
+	 * @throws RecordNotFoundException
+	 */
+	@GetMapping
+    public List<StockDto> fetchStocks() throws RecordNotFoundException {
+		logger.info("Inside fetchallstocks");
+        List<StockDto> stocks = stockService.getAllStocks();
+        if (stocks.isEmpty()) {
+			throw new RecordNotFoundException("No Stocks Present");
+		}
+        else {
+        return stocks;
+        }
+    }
+	
+	
+	
+	/**
+	 * Method to fetch stock by name
+	 * @param StockName
+	 * @return
+	 * @throws RecordNotFoundException
+	 */
+	@GetMapping("/{stock_name}")
+	public List<StockDto> getStockOnStockName(@PathVariable("stock_name") String StockName)
+			throws RecordNotFoundException {
+		logger.info("Inside getStockOnStockName");
+		List<StockDto> list = stockService.getStocksByName(StockName);
+		if (list.isEmpty()) {
+			throw new RecordNotFoundException("No Record Mathing the name" + StockName);
+		}
+
+		else {
+			return list;
+		}
+	}
+}

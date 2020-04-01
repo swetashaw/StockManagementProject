@@ -1,0 +1,75 @@
+package com.project.stockmanagement.service;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
+import org.jboss.logging.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.project.stockmanagement.dto.StockDto;
+import com.project.stockmanagement.entity.Stock;
+import com.project.stockmanagement.mapper.Mapper;
+import com.project.stockmanagement.repository.StockManagementNativeSqlRepo;
+import com.project.stockmanagement.repository.StockRepository;
+
+@Service
+public class StockManagementService {
+
+	@Autowired
+	StockRepository stockRepo;
+
+	@Autowired
+	StockManagementNativeSqlRepo smNativeSqlRepo;
+	
+	@Autowired
+	 Mapper mapper;
+	
+	Logger logger;
+
+		public List<StockDto> getAllStocks() {
+			logger.info("inside getAllStocks");
+			List<StockDto> stockDto = new ArrayList<StockDto>();
+
+			List<Stock> stockList = stockRepo.findAll();
+			if (stockList.size() > 0) {
+				stockDto = mapper.StockEntityListToDtoList(stockList);
+			} 
+			return stockDto;
+		}
+
+	public Optional<Stock> getStocksById(Long id) {
+		logger.info("inside getStocksById");
+		return stockRepo.findById(id);
+
+	}
+
+	public List<StockDto> getStocksByName(String stockName) {
+		// TODO Auto-generated method stub
+		logger.info("inside getStocksByName");
+		StringBuffer whereQuery = new StringBuffer();
+
+		whereQuery.append("stock_name='").append(stockName).append("'");
+
+		List<Stock> ls = smNativeSqlRepo.getStocksByStockName(whereQuery);
+
+		if (ls.size() > 0) {
+			List<StockDto> stockDto = mapper.StockEntityListToDtoList(ls);
+			return stockDto;
+		} else {
+
+			return new ArrayList<StockDto>();
+		}
+	
+	}
+	
+	
+	private double calculatestockprice(Stock stock) {
+		
+		double productSum = stock.getPricePerUnit() * stock.getQuantity();
+		return productSum;
+               
+	}
+
+}

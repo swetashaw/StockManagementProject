@@ -1,0 +1,8 @@
+
+
+java:S1598"ÍThis file "LeavemanagementApplicationTests.java" should be located in "com\project\leavemanagement" directory, not in "C:\Sweta Project Softwares\StockManagement\src\main\java\com\project\stockmanagement".(éÀ†şûÿÿÿÿH-RCRITICALZ
+CODE_SMELL
+´
+java:S1186
+"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(áùêÌùÿÿÿÿH.RCRITICALZ
+CODE_SMELL

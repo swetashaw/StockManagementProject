@@ -1,0 +1,25 @@
+
+
+java:S1488E"bImmediately return this expression instead of assigning it to the temporary variable "productSum".(òœþëHIRMINORZ
+CODE_SMELL
+‹
+java:S14889"`Immediately return this expression instead of assigning it to the temporary variable "stockDto".(äç¾HHRMINORZ
+CODE_SMELL
+i
+java:S11558">Use isEmpty() to check whether the collection is empty or not.(€ÍþºHGRMINORZ
+CODE_SMELL
+h
+java:S1144C"8Remove this unused private "calculatestockprice" method.(Ú§‘ëþÿÿÿÿHNRMAJORZ
+CODE_SMELL
+i
+java:S1155$">Use isEmpty() to check whether the collection is empty or not.(ˆ°òüHFRMINORZ
+CODE_SMELL
+„
+java:S2293!"YReplace the type specification in this constructor call with the diamond operator ("<>").(ÑÔÃ°HKRMINORZ
+CODE_SMELL
+‰
+java:S2293="YReplace the type specification in this constructor call with the diamond operator ("<>").(ñÜÔ•ùÿÿÿÿHMRMINORZ
+CODE_SMELL
+Š
+java:S11492"_Replace the synchronized class "StringBuffer" by an unsynchronized one such as "StringBuilder".(¼³ƒÃHJRMAJORZ
+CODE_SMELL
