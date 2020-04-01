@@ -20,7 +20,7 @@ import javax.persistence.Table;
 
 public class UserStocksDto {
 
-	
+	//For id
 	private Long id;
 	
 	private long userid;
